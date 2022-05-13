@@ -1,6 +1,29 @@
-import os
 
+    
+import re
+import os
+import requests
+from bs4 import BeautifulSoup
+
+url = "http://www.guiatrabalhista.com.br/guia/salario_minimo.htm"
+
+headers = {'User-Agent': "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.198 Safari/537.36"}
+
+site = requests.get(url, headers = headers)
+
+soup = BeautifulSoup(site.content, 'html.parser')
+
+salario = soup.find('span', style="font-size: 12pt; text-align: justify;")
+
+a = (salario.string)
+
+b = a
+
+b = re.sub('[^0-9]', '', b)
+
+c = b.split('0')
 #funções diversas
+
 
 def tela():
     print("#" * 71)
@@ -16,13 +39,12 @@ def limpar():
 def pausar():
     os.system('pause')
 
-
 limpar()
 tela()
 print("\nAJUSTE OS PAREMETROS DO SISTEMA :\n")
 
-qtd = int(input("Digite a quantidade de fucionários    : "))
-sma = float(input("Digite o valor atual do salário minimo: "))
+#qtd = int(input("Digite a quantidade de fucionários    : "))
+sma = float(c[0])
 print("\n")
 folha = 0
 nvfolha = 0
@@ -39,19 +61,25 @@ tela()
 
 # mostra na tela o valor do salário atual
 
-print("\nLANÇAMENTOS DO SISTEMA       VALOR DO SALARIO ATUALMENTE      R$ {}\n".format(sma))
+print("\nLANÇAMENTOS DO SISTEMA       VALOR DO SALARIO ATUALMENTE     R$ {:.2f}\n".format(sma))
 
-x: int
+#x: int
 
 # entrada de dados dos funcinários
 
-for x in range(0, qtd):
-    print("\n{}º - Lançamento".format(x + 1))
+#for x in range(0, qtd):
+#Adição do while e das variaveis comando e reutilização da varivel qtd
+qtd = 0
+comando = "S"
+while comando != "N":
+     
+    print("\n{}º - Lançamento".format(1 + qtd))
     nome = str(input('Digite o nome do funcionario : '))
     func.append(nome)
     sal = float(input('Digite o salário atual       : '))
     slant.append(sal)
-
+    qtd = qtd + 1
+    comando = input("Deseja registrar mais um funcionário? S/N: ").capitalize()
 #desvios e calculos
 
     if sal <= sma * 3:

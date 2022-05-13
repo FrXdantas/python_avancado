@@ -1,0 +1,17 @@
+RESUMO EM TXT DOS LANÇAMENTOS
+
+Nº  FUNCIONARIO             SALARIO  PORC          REAJUSTE  VLOR FINAL
+=======================================================================
+
+1 - thiago                  1000.00  50%            500.00      1500.00
+2 - firs                    9080.00  20%           1816.00     10896.00
+
+RESUMO DE IMPACTO NA FOLHA DE PAGAMENTO 
+
+=======================================================================
+
+Valor da folha de pagamento.....: R$ 10.080,00
+Valor de Reajuste...............: R$ 2.316,00
+Valor da nova Folha de Pagamento: R$ 12.396,00
+
+=======================================================================
